@@ -1,0 +1,30 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+header {
+    background-color: #000;
+    color: #fff;
+
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    
+    position: relative;
+    z-index: 1;
+
+    h2 {
+        display: inline-block;
+        margin: 25px;
+    }
+    .left {
+        display: inline-block;
+    }
+    .right {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+    }
+}
+.icons {
+    font-size: 50px;
+}

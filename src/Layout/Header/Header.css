@@ -1,0 +1,29 @@
+header {
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+}
+
+header h2 {
+  display: inline-block;
+  margin: 25px;
+}
+
+header .left {
+  display: inline-block;
+}
+
+header .right {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+.icons {
+  font-size: 50px;
+}
+/*# sourceMappingURL=Header.css.map */
