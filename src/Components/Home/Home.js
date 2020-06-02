@@ -31,13 +31,29 @@ const Home = () => {
     const getPotties = async() => {
       const data = await Potty.PottyIndex();
       console.log(data);
-      setPotties(data.data.potties);
+      // hardcoded data 
+      let hardcoded_data = 
+      {
+        potties: [
+          {
+          name: 'Starbucks',
+          latitude: "34.390000",
+          longitude: "-118.570000"
+          },
+          {
+          name: 'Starbucks',
+          latitude: "34.400000",
+          longitude: "-118.550000"
+          }
+        ]}
+        setPotties(hardcoded_data.potties);
+      // setPotties(data.data.potties);
       // setUsers(data.data.customers);
       // loadUsers(data.data.customers);
   }
     useEffect(() => {
         getLocation();
-    }, [pos]);
+    }, []);
     useEffect(() => {
       getPotties();
   }, []);
