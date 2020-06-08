@@ -10,6 +10,9 @@ const MyMapComponent = (props) => {
       })
       const [markers, setMarkers] = useState([]);
       const [active, setActive] = useState(null);
+      const [closest,setClosest] = useState(null);
+      const [minDist, setDist] = useState(null);
+      const [centerCoords, setCenter] = useState()
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
         mapRef.current = map;
@@ -29,6 +32,29 @@ const MyMapComponent = (props) => {
         draggable: true,
         zoomControl: true
       }
+      function distance(lat1, lon1, lat2, lon2) {
+        var p = 0.017453292519943295;    // Math.PI / 180
+        var c = Math.cos;
+        var a = 0.5 - c((lat2 - lat1) * p)/2 + 
+                c(lat1 * p) * c(lat2 * p) * 
+                (1 - c((lon2 - lon1) * p))/2;
+      
+        return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+      }
+      const calculateDistance = (potty) => {
+        if (!props.pos) return;
+        if (!closest) {
+          setClosest(potty);
+          setDist(distance(props.pos.lat, props.pos.lng, potty.latitude, potty.longitude));
+        }
+        else {
+          let dist = distance(props.pos.lat, props.pos.lng, potty.latitude, potty.longitude);
+          if (dist < minDist) {
+            setDist(dist);
+            setClosest(potty);
+          }
+        }
+      }
       useEffect(() => {
         if (props.potties) {
             // let potties = props.potties.map((potty, idx) => {
@@ -46,6 +72,13 @@ const MyMapComponent = (props) => {
         }   
         
     }, [props.potties]);
+    useEffect(() => {
+      if (props.emergency) {
+        console.log("EMERGENCY")
+        setActive(closest);
+        setCenter({lat: parseFloat(closest.latitude), lng: parseFloat(closest.longitude)});
+      }
+    }, [props.emergency]);
       if (loadError) return "Error loading maps";
       if (!isLoaded) return "Loading Maps";
 
@@ -87,20 +120,23 @@ const MyMapComponent = (props) => {
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         zoom={11} 
-        center={center} 
+        center={centerCoords || center} 
         options={options}
         onLoad={onMapLoad}>
         {markers.map((marker,idx) => 
-        <Marker 
+        {
+          calculateDistance(marker);
+        return <Marker 
           key={idx} 
           position={{lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)}} 
         // icon={{
         //   url: '/toilet.svg'
         // }}
           onClick={() => {
-            setActive(marker)
+            setActive(marker);
+            setCenter({lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)});
           }}
-        />)}
+        />})}
         {active ? 
         (<InfoWindow
             position={{lat: parseFloat(active.latitude), lng: parseFloat(active.longitude)}}

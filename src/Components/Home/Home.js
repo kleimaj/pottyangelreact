@@ -6,6 +6,7 @@ import './Home.css';
 const Home = () => {
     const [pos, setPos] = useState(null);
     const [potties, setPotties] = useState(null);
+    const [emergency, setEmergency] = useState(false);
 
     const getLocation = async () => {
         var options = {
@@ -48,8 +49,6 @@ const Home = () => {
         ]}
         setPotties(hardcoded_data.potties);
       // setPotties(data.data.potties);
-      // setUsers(data.data.customers);
-      // loadUsers(data.data.customers);
   }
     useEffect(() => {
         getLocation();
@@ -61,10 +60,10 @@ const Home = () => {
         <>
         <div className="map">
             {/* <h1>Map</h1> */}
-         <MyMapComponent pos={pos} potties={potties}/>
+         <MyMapComponent pos={pos} potties={potties} emergency={emergency}/>
 
         </div>
-        <button className="emergency">EMERGENCY</button>
+        <button className="emergency" onClick={() => setEmergency(true)}>EMERGENCY</button>
         </>
     )
 }
