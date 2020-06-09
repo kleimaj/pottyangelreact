@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faUser, faToiletPaper, faPlus } from '@fortawesome/free-solid-svg-icons'
 import './Header.css';
@@ -15,21 +16,33 @@ const renderDesktop = (props) => {
             {props.loggedIn ? 
             <div className="desktop">
                 <div className="left">
-                  <h2>Potty Angel</h2>
+                  <Link to='/'>
+                    <h2>Potty Angel</h2>
+                  </Link>
                 </div>
                 <div className="right">
-                  <h2>Settings</h2>
-                  <h2>Add Bathroom</h2>
+                  <Link to='/settings'>
+                    <h2>Settings</h2>
+                  </Link>
+                  <Link to='/logout'>
+                    <h2>Logout</h2>
+                  </Link>
                 </div>
             </div>
             :
             <div className="desktop">
                 <div className="left">
-                  <h2>Potty Angel</h2>
+                  <Link to='/'>
+                    <h2>Potty Angel</h2>
+                  </Link>
                 </div>
                 <div className="right">
-                  <h2>Settings</h2>
+                  <Link to='/settings'>
+                    <h2>Settings</h2>
+                  </Link>
+                  <Link to='signup'>
                   <h2>Sign-up</h2>
+                  </Link>
                 </div>
             </div>    
         }

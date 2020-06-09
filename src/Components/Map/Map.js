@@ -55,6 +55,25 @@ const MyMapComponent = (props) => {
           }
         }
       }
+      const mapClick = (e) => {
+        if (props.add) {
+          console.log("click")
+          let latLng = e.latLng;
+          // get other data
+          props.modal(latLng);
+          // need to get data somehow
+          let ret = null;
+          if (!ret) return;
+          setMarkers((current) => [
+            ...current,
+          {
+            latitude: latLng.lat(),
+            longitude: latLng.lng(),
+            name: ret.name,
+            rating: ret.rating,
+          }])
+        }
+      }
       useEffect(() => {
         if (props.potties) {
             // let potties = props.potties.map((potty, idx) => {
@@ -72,6 +91,7 @@ const MyMapComponent = (props) => {
         }   
         
     }, [props.potties]);
+    
     useEffect(() => {
       if (props.emergency) {
         console.log("EMERGENCY")
@@ -79,53 +99,42 @@ const MyMapComponent = (props) => {
         setCenter({lat: parseFloat(closest.latitude), lng: parseFloat(closest.longitude)});
       }
     }, [props.emergency]);
+
+    useEffect(() => {
+      if (props.add) {
+        console.log("ADD");
+      }
+    }, [props.add]);
+    useEffect(() => {
+      if (props.newMarker.length == 4) {
+        console.log(props.newMarker);
+        setMarkers((current) => [
+          ...current,
+          {
+            latitude: props.newMarker[0],
+            longitude: props.newMarker[1],
+            name: props.newMarker[2],
+            rating: props.newMarker[3]
+          }
+        ])
+        props.setData([]);
+      }
+    }, [props.newMarker])
+
       if (loadError) return "Error loading maps";
       if (!isLoaded) return "Loading Maps";
 
-    // const loadInfoWindow = (active) => {
-    //     console.log(active);
-    //     let iw = <InfoWindow 
-    //     visible={true}
-    //     onCloseClick={() => setActive(null)}
-    //     position={{lat: parseFloat(active.latitude), lng: parseFloat(active.longitude)}}
-    //     >
-    //         <div className="infoWindow">
-    //         <h2>{active.name}</h2>
-    //         <a target="_blank" href={"https://www.google.com/maps/search/?api=1&query="+active.latitude+','+active.longitude}>View Directions</a>
-    //         <Rating rating={active.rating} />
-    //         </div>
-    //     </InfoWindow>
-    //     console.log("Setting infowindow")
-    //     setActive(iw);
-    // }
-    // const loadPotties = () => {
-    //     if (props.potties) {
-    //         console.log(props.potties)
-    //         let potties = props.potties.map((potty, idx) => {
-    //             return (<Marker 
-    //             key={idx} 
-    //             position={{'lat': potty.latitude, 'lng':potty.longitude}}
-    //             onClick={() => {
-    //                 console.log(potty)
-    //                 setActive(potty)}}
-    //               />)
-    //         })
-    //         setMarkers(potties); 
-    //     }
-    //     else {
-    //         console.log('initial render')
-    //     }
-    // }
     return (
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
+        onClick={mapClick}
         zoom={11} 
         center={centerCoords || center} 
         options={options}
         onLoad={onMapLoad}>
         {markers.map((marker,idx) => 
         {
-          calculateDistance(marker);
+          // calculateDistance(marker);
         return <Marker 
           key={idx} 
           position={{lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)}} 
