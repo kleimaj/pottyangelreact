@@ -13,6 +13,7 @@ const MyMapComponent = (props) => {
       const [closest,setClosest] = useState(null);
       const [minDist, setDist] = useState(null);
       const [centerCoords, setCenter] = useState()
+      const [zoom, setZoom] = useState(11);
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
         mapRef.current = map;
@@ -50,6 +51,7 @@ const MyMapComponent = (props) => {
         else {
           let dist = distance(props.pos.lat, props.pos.lng, potty.latitude, potty.longitude);
           if (dist < minDist) {
+            // console.log(dist) 
             setDist(dist);
             setClosest(potty);
           }
@@ -95,6 +97,7 @@ const MyMapComponent = (props) => {
     useEffect(() => {
       if (props.emergency) {
         console.log("EMERGENCY")
+        console.log(closest);
         setActive(closest);
         setCenter({lat: parseFloat(closest.latitude), lng: parseFloat(closest.longitude)});
       }
@@ -128,13 +131,24 @@ const MyMapComponent = (props) => {
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
-        zoom={11} 
+        zoom={zoom || 11} 
         center={centerCoords || center} 
         options={options}
         onLoad={onMapLoad}>
+        {props.pos ? 
+        <Marker
+          onClick={() => {
+            setZoom(15)
+            setCenter(props.pos)
+          }}
+          position={props.pos}
+          icon={{
+            url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+          }} /> : null}
         {markers.map((marker,idx) => 
         {
-          // calculateDistance(marker);
+          calculateDistance(marker);
+          // if (idx > 2000) return;
         return <Marker 
           key={idx} 
           position={{lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)}} 

@@ -38,20 +38,20 @@ const Home = (props) => {
       const data = await Potty.PottyIndex();
       console.log(data);
       // hardcoded data 
-      let hardcoded_data = 
-      {
-        potties: [
-          {
-          name: 'Starbucks',
-          latitude: "34.390000",
-          longitude: "-118.570000"
-          },
-          {
-          name: 'Starbucks',
-          latitude: "34.400000",
-          longitude: "-118.550000"
-          }
-        ]}
+      // let hardcoded_data = 
+      // {
+      //   potties: [
+      //     {
+      //     name: 'Starbucks',
+      //     latitude: "34.390000",
+      //     longitude: "-118.570000"
+      //     },
+      //     {
+      //     name: 'Starbucks',
+      //     latitude: "34.400000",
+      //     longitude: "-118.550000"
+      //     }
+      //   ]}
         // setPotties(hardcoded_data.potties);
       setPotties(data.data.potties);
   }
