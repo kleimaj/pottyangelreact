@@ -1,23 +1,23 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
+import './Rating.css';
 
 const Rating = (props) => {
     let stars = [] 
     if (props.rating) {
-        for (let i = 0; i < parseInt(props.rating); i++) {
+        let rating = parseInt(props.rating);
+        for (let i = 0; i < rating; i++) {
             stars.push(
-                <FontAwesomeIcon key={i} icon={faStar} />
+                <FontAwesomeIcon key={i} icon={faStar}
+                    onClick={() => console.log(i, 'click')} />
             )
         }
-        let blank = 5 % parseInt(props.rating)
-        if (blank) {
-            // if not 5 stars
-            for (let i = 0; i < blank; i++) {
-                stars.push(
-                    <FontAwesomeIcon key={blank - i} icon={faStar} className="star-blank" />
-                )
-            }
+        for (let i = rating; i <= 4; i++) {
+            stars.push(
+                <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
+                    onClick={() => console.log(i, 'click')} />
+            )
         }
     }
     else {

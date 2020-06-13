@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import mapStyles from './mapStyles';
 import Rating from './Rating/Rating';
+import Potty from '../../api/Potty';
+import { getCurrentAddress } from './Geocoder';
 
 const MyMapComponent = (props) => {
 
@@ -13,6 +15,7 @@ const MyMapComponent = (props) => {
       const [closest,setClosest] = useState(null);
       const [minDist, setDist] = useState(null);
       const [centerCoords, setCenter] = useState()
+      const [address, setAddress] = useState(null)
       const [zoom, setZoom] = useState(11);
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
@@ -98,6 +101,7 @@ const MyMapComponent = (props) => {
       if (props.emergency) {
         console.log("EMERGENCY")
         console.log(closest);
+        if (!closest) return; 
         setActive(closest);
         setCenter({lat: parseFloat(closest.latitude), lng: parseFloat(closest.longitude)});
       }
@@ -108,9 +112,22 @@ const MyMapComponent = (props) => {
         console.log("ADD");
       }
     }, [props.add]);
+    const createPotty = async(body) => {
+      const data = await Potty.PottyCreate(body)
+      console.log(data);
+    }
     useEffect(() => {
       if (props.newMarker.length == 4) {
         console.log(props.newMarker);
+        const body = 
+        {
+          latitude: props.newMarker[0],
+          longitude: props.newMarker[1],
+          name: props.newMarker[2],
+          rating: props.newMarker[3]
+        }
+        createPotty(body);
+        
         setMarkers((current) => [
           ...current,
           {
@@ -124,6 +141,22 @@ const MyMapComponent = (props) => {
       }
     }, [props.newMarker])
 
+    const handleZoomChanged = () => {
+      // const zoomLevel = this.refs.mapRef.getZoom();
+      // console.log(zoomLevel);
+      // if (zoomLevel !== this.state.zoomLevel) {
+      //   this.setState({zoomLevel});
+      // }
+    }
+  
+    const handleCenterChanged = () => {
+      // const center = this.refs.mapRef.getCenter();
+      // console.log(center)
+      // if (!center.equals(this.state.center)) {
+      //   this.setState({center});
+      // }
+    }
+
       if (loadError) return "Error loading maps";
       if (!isLoaded) return "Loading Maps";
 
@@ -134,7 +167,9 @@ const MyMapComponent = (props) => {
         zoom={zoom || 11} 
         center={centerCoords || center} 
         options={options}
-        onLoad={onMapLoad}>
+        onLoad={onMapLoad}
+        onCenterChanged={handleCenterChanged}
+        onZoomChanged={handleZoomChanged}>
         {props.pos ? 
         <Marker
           onClick={() => {
@@ -157,7 +192,9 @@ const MyMapComponent = (props) => {
         // }}
           onClick={() => {
             setActive(marker);
+            setZoom(15);
             setCenter({lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)});
+            getCurrentAddress(marker).then((res) => setAddress(res))
           }}
         />})}
         {active ? 
@@ -166,7 +203,11 @@ const MyMapComponent = (props) => {
             onCloseClick={() => setActive(null)}>
             <div className="infoWindow">
                 <h2>{active.name}</h2>
-                <a target="_blank" href={"https://www.google.com/maps/search/?api=1&query="+active.latitude+','+active.longitude}>View Directions</a>
+        <a target="_blank" href=
+        {"https://www.google.com/maps/search/?api=1&query="+
+        // active.latitude+','+active.longitude}
+        address}
+        >{address || 'Directions Here'}</a>
                 <Rating rating={active.rating} />
              </div>
         </InfoWindow>) : null}

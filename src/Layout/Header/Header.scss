@@ -24,6 +24,12 @@ header {
         position: absolute;
         right: 0;
     }
+    .logout {
+        background-color: black;
+        border: none;
+        cursor: pointer;
+        font-size: medium;
+    }
 }
 .icons {
     font-size: 50px;

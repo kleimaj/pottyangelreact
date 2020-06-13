@@ -61,14 +61,14 @@ const Home = (props) => {
   }
   const submitModal = (name,rating) => {
     setShow(false);
-    // let newData = data;
-    // console.log(name,rating);
-    // newData.name = name;
-    // newData.rating = rating;
+
+    //api call
+    // const data = await  
     setData((current) => [...current,
       name,
       rating
     ]);
+    // const data = await Potty.PottyCreate(data)
   }
     useEffect(() => {
         getLocation();
