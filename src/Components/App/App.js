@@ -3,6 +3,8 @@ import './App.css';
 import Header from '../../Layout/Header/Header';
 import Routes from '../../Config/routes';
 import setAuthHeader from '../../utils/setAuthHeader';
+import UserApi from '../../api/UserApi';
+
 function App() {
   // boolean true or false
   // const [loggedIn, login] = useState(false);
@@ -14,7 +16,16 @@ function App() {
 
   useEffect(() => {
     const item = window.localStorage.getItem('jwtToken');
-    if (item) setAuthHeader(item);
+    if (item) {
+      setAuthHeader(item);
+      UserApi.verify()
+      .then((data) => setUser(data.data.username))
+      .catch((error) => {
+        console.log(error, "Session Timed Out")
+        logout();
+      })
+      // console.log(data);
+    }
   }, [])
   const logout = () => {
     // delete the token from localStorage
@@ -33,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <Header loggedIn={loggedIn} logout={logout} />
-      <Routes loggedIn={loggedIn} setUser={setUser} login={login}/>
+      <Routes loggedIn={loggedIn} setUser={setUser} user={user} login={login}/>
     </div>
   );
 }

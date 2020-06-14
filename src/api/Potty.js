@@ -7,14 +7,18 @@ const endpoint = "http://127.0.0.1:8000/"
 
 const PottyIndex = () => {
     // axios.defaults.withCredentials = false;
-    return axios.get(endpoint+'potty')
+    return axios.get(endpoint+'potty');
 }
 const PottyCreate = (body) => {
     // axios.defaults.withCredentials = true;
-    return axios.post(endpoint+'potty', body)
+    return axios.post(endpoint+'potty', body);
 }
+const PottyGet = (id) => {
+    return axios.get(endpoint+`potty/${id}`);
+} 
 
 export default {
     PottyIndex,
-    PottyCreate
+    PottyCreate,
+    PottyGet
 }

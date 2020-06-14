@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const setAuthHeader = (JWT) => {
   if (JWT) {
-    axios.defaults.headers.common['Authorization'] = JWT;
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + JWT;
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }

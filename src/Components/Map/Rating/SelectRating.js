@@ -15,7 +15,7 @@ const Rating = (props) => {
         }
         for (let i = rating; i < 4; i++) {
             arr.push(
-                <FontAwesomeIcon key={i} icon={faStar} className="star-blank"
+                <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
                     onClick={() => renderRating(i)} />
             )
         }

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import mapStyles from './mapStyles';
 import Rating from './Rating/Rating';
@@ -202,7 +203,7 @@ const MyMapComponent = (props) => {
             position={{lat: parseFloat(active.latitude), lng: parseFloat(active.longitude)}}
             onCloseClick={() => setActive(null)}>
             <div className="infoWindow">
-                <h2>{active.name}</h2>
+                <h2><Link to={"/potty/"+active.id}>{active.name}</Link></h2>
         <a target="_blank" href=
         {"https://www.google.com/maps/search/?api=1&query="+
         // active.latitude+','+active.longitude}

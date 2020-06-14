@@ -45,7 +45,7 @@ const Onboarding = (props) => {
             // set the state to the decoded user information
             props.login(true);
 
-            props.setUser({user: decoded.username, id:decoded._id});
+            props.setUser(decoded.username);
             // this.setState({
             //   user: decoded.username,
             //   id: decoded._id
