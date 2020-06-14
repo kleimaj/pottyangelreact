@@ -5,6 +5,7 @@ import Comments from '../../Containers/Comments/Comments';
 
 const PottyDetails = (props) => {
     const [potty, setPotty] = useState(null)
+    const [id, setId] = useState(null)
 
     const getPotty = async(id) => {
         const data = await Potty.PottyGet(id);
@@ -12,8 +13,9 @@ const PottyDetails = (props) => {
         setPotty(data.data.potty.fields);
     }
     useEffect(() => {
-        var pathArray = window.location.pathname.split('/');
+        const pathArray = window.location.pathname.split('/');
         getPotty(pathArray[2]);
+        setId(pathArray[2])
     }, [])
 
     return (
@@ -26,7 +28,7 @@ const PottyDetails = (props) => {
                 // active.latitude+','+active.longitude}
                 potty.address}>{potty.address}</a>
                 <Rating rating={potty.rating}/>
-                <Comments comments={potty.comments} user={props.user} loggedIn={props.loggedIn} />
+                <Comments id={id} comments={potty.comments} user={props.user} loggedIn={props.loggedIn} />
             </>
             ):
             <h2>Loading</h2>

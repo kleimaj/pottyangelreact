@@ -15,10 +15,14 @@ const PottyCreate = (body) => {
 }
 const PottyGet = (id) => {
     return axios.get(endpoint+`potty/${id}`);
-} 
+}
+const PottyUpdate = (id, body) => {
+    return axios.put(endpoint+`potty/${id}/update`, body)
+}  
 
 export default {
     PottyIndex,
     PottyCreate,
-    PottyGet
+    PottyGet,
+    PottyUpdate
 }

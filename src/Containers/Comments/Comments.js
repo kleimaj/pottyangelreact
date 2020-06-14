@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Comment from './Comment';
 import Rating from '../../Components/Map/Rating/SelectRating';
+import Potty from '../../api/Potty';
 
 const Comments = (props) => {
     const [comments, setComments] = useState(props.comments || [])
@@ -8,6 +9,10 @@ const Comments = (props) => {
     const [body, setBody] = useState('');
     const [rating, setRating] = useState(null)
 
+    const updatePotty = async(req) => {
+        const data = await Potty.PottyUpdate(props.id, req);
+        console.log(data);
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         if (rating && title && body) {
@@ -22,14 +27,7 @@ const Comments = (props) => {
                 ...current,
                 req
             ])
-            // setMarkers((current) => [
-            //     ...current,
-            //   {
-            //     latitude: latLng.lat(),
-            //     longitude: latLng.lng(),
-            //     name: ret.name,
-            //     rating: ret.rating,
-            //   }])
+            updatePotty(req)
         }
     }
 

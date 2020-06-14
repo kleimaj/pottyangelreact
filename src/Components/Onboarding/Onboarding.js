@@ -72,7 +72,9 @@ const Onboarding = (props) => {
                     // decode the token
                     const decoded = jwt_decode(token);
                     // set the state to the decoded user information
-                    props.login({user: decoded.username, id:decoded._id});
+                    props.login(true);
+                    props.setUser(decoded.username);
+
                 })
                 .catch(err => console.log(err))
             //   // get the token from the response
