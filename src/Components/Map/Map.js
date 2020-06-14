@@ -115,7 +115,8 @@ const MyMapComponent = (props) => {
     }, [props.add]);
     const createPotty = async(body) => {
       const data = await Potty.PottyCreate(body)
-      console.log(data);
+      return data.data.id
+      // console.log(data);
     }
     useEffect(() => {
       if (props.newMarker.length == 4) {
@@ -127,18 +128,24 @@ const MyMapComponent = (props) => {
           name: props.newMarker[2],
           rating: props.newMarker[3]
         }
-        createPotty(body);
-        
-        setMarkers((current) => [
-          ...current,
-          {
-            latitude: props.newMarker[0],
-            longitude: props.newMarker[1],
-            name: props.newMarker[2],
-            rating: props.newMarker[3]
-          }
-        ])
-        props.setData([]);
+        getCurrentAddress(body).then((res) => {
+          body.address = res
+          console.log(body)
+          createPotty(body)
+          .then((id) => {
+            setMarkers((current) => [
+              ...current,
+              {
+                latitude: props.newMarker[0],
+                longitude: props.newMarker[1],
+                name: props.newMarker[2],
+                rating: props.newMarker[3],
+                id: id
+              }
+            ])
+            props.setData([]);
+          })
+        });
       }
     }, [props.newMarker])
 
