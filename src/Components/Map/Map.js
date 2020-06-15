@@ -6,10 +6,22 @@ import Rating from './Rating/Rating';
 import Potty from '../../api/Potty';
 import { getCurrentAddress } from './Geocoder';
 
-const MyMapComponent = (props) => {
+import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 
+import {
+  Combobox, 
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption
+} from '@reach/combobox';
+import "@reach/combobox/styles.css";
+
+const MyMapComponent = (props) => {
+    const libraries = ["places"];
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyCkVETyJKT6I-sjzL12zkT57ji7TZT2tQA"
+        googleMapsApiKey: "AIzaSyCkVETyJKT6I-sjzL12zkT57ji7TZT2tQA",
+        libraries
       })
       const [markers, setMarkers] = useState([]);
       const [active, setActive] = useState(null);
@@ -174,6 +186,9 @@ const MyMapComponent = (props) => {
       if (!isLoaded) return "Loading Maps";
 
     return (
+      <>
+        <Search currPos={props.currPos}/>
+
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
@@ -225,7 +240,41 @@ const MyMapComponent = (props) => {
              </div>
         </InfoWindow>) : null}
       </GoogleMap>
+      </>
     );
+}
+
+const Search = (props) => {
+  const {
+    ready,
+    value,
+    suggestions: {status, data}, 
+    setValue, 
+    clearSuggestions
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: {lat: () => props.currPos.lat, lng: () => props.currPos.lng},
+      radius: 200 * 1000
+    },
+  });
+  
+  return (
+    <div className="search">
+    <Combobox onSelect={(address) => console.log(address)}>
+      <ComboboxInput value={value} onChange={(e) => {
+        setValue(e.target.value);
+      }}
+        disabled={!ready}
+        placeholder={"Enter an address"}
+      />
+      <ComboboxPopover>
+        {status === "OK" && data.map(({id, description}) => (
+          <ComboboxOption key={id} value={description} />
+        ))}
+      </ComboboxPopover>
+    </Combobox>
+    </div>
+  )
 }
 
 export default MyMapComponent;
