@@ -16,9 +16,19 @@ import {
   ComboboxOption
 } from '@reach/combobox';
 import "@reach/combobox/styles.css";
-
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: '100vw',
+  height: '80vh'
+}
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  // mapTypeControl: true,
+  draggable: true,
+  zoomControl: true
+}
 const MyMapComponent = (props) => {
-    const libraries = ["places"];
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyCkVETyJKT6I-sjzL12zkT57ji7TZT2tQA",
         libraries
@@ -30,25 +40,21 @@ const MyMapComponent = (props) => {
       const [centerCoords, setCenter] = useState()
       const [address, setAddress] = useState(null)
       const [zoom, setZoom] = useState(11);
+
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
         mapRef.current = map;
       }, []);
-      const mapContainerStyle = {
-        width: '100vw',
-        height: '80vh'
-      }
+      
+      const panTo = React.useCallback(({lat, lng}) => {
+        mapRef.current.panTo({lat, lng});
+        mapRef.current.setZoom(14);
+      }, []);
       const center = props.pos || {
         lat: 43,
         lng: -79
       }
-      const options = {
-        styles: mapStyles,
-        disableDefaultUI: true,
-        // mapTypeControl: true,
-        draggable: true,
-        zoomControl: true
-      }
+      
       function distance(lat1, lon1, lat2, lon2) {
         var p = 0.017453292519943295;    // Math.PI / 180
         var c = Math.cos;
@@ -187,7 +193,7 @@ const MyMapComponent = (props) => {
 
     return (
       <>
-        <Search currPos={props.currPos}/>
+        <Search currPos={props.currPos} panTo={panTo} />
 
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
@@ -260,18 +266,30 @@ const Search = (props) => {
   
   return (
     <div className="search">
-    <Combobox onSelect={(address) => console.log(address)}>
+    <Combobox onSelect={async (address) => {
+      setValue(address, false);
+      clearSuggestions();
+      
+      try {
+        const res = await getGeocode({address});
+        const {lat, lng} = await getLatLng(res[0]);
+        props.panTo({lat, lng});
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }}>
       <ComboboxInput value={value} onChange={(e) => {
         setValue(e.target.value);
-      }}
-        disabled={!ready}
-        placeholder={"Enter an address"}
-      />
-      <ComboboxPopover>
-        {status === "OK" && data.map(({id, description}) => (
-          <ComboboxOption key={id} value={description} />
-        ))}
-      </ComboboxPopover>
+      }} disabled={!ready} placeholder={"Enter an address"} />
+        <ComboboxPopover>
+          <ComboboxList className="suggestion-list">
+            {status === "OK" &&
+              data.map(({ id, description }) => (
+                <ComboboxOption key={id} value={description} />
+              ))}
+          </ComboboxList>
+        </ComboboxPopover>
     </Combobox>
     </div>
   )

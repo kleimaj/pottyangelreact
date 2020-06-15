@@ -40,6 +40,12 @@ height: 80vh;
         width: 100%;
     }
 }
+.suggestion-list {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid black;
+}
 .emergency {
     width: 100vw;
     height: 50px;
