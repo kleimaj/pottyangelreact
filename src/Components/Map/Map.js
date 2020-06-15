@@ -158,11 +158,16 @@ const MyMapComponent = (props) => {
     }
   
     const handleCenterChanged = () => {
-      // const center = this.refs.mapRef.getCenter();
-      // console.log(center)
-      // if (!center.equals(this.state.center)) {
-      //   this.setState({center});
-      // }
+      if (!mapRef.current && !props.currPos.length) return;
+      const newPos = mapRef.current.getCenter().toJSON();
+      // console.log(props.cur)
+      if (distance(props.currPos.lat, props.currPos.lng, newPos.lat, newPos.lng) >= 20) {
+        // console.log("HERE")
+        // retrieve new view from back-end
+        // console.log("Here")
+        props.getPotties(newPos)
+      }
+      // setPosition(newPos);
     }
 
       if (loadError) return "Error loading maps";

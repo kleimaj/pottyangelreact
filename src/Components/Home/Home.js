@@ -12,6 +12,8 @@ const Home = (props) => {
     const [add, setAdd] = useState(false);
     const [show, setShow] = useState(false);
     const [data, setData] = useState([]);
+    const [currPos, setCurrPos] = useState([])
+    const [mutex, setMutex] = useState(0)
 
     const getLocation = async () => {
         var options = {
@@ -27,6 +29,7 @@ const Home = (props) => {
             console.log(`Longitude: ${crd.longitude}`);
             console.log(`More or less ${crd.accuracy} meters.`);
             setPos({lat: crd.latitude, lng: crd.longitude});
+            return({lat: crd.latitude, lng: crd.longitude})
           }
           function error(err) {
             console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -34,8 +37,10 @@ const Home = (props) => {
         navigator.geolocation.getCurrentPosition(success, error, options);
 
     }
-    const getPotties = async() => {
-      const data = await Potty.PottyIndex();
+    const getPotties = async(pos) => {
+      if (mutex) return;
+      setMutex(1)
+      const data = await Potty.PottyIndex(pos);
       console.log(data);
       // hardcoded data 
       // let hardcoded_data = 
@@ -54,6 +59,8 @@ const Home = (props) => {
       //   ]}
         // setPotties(hardcoded_data.potties);
       setPotties(data.data.potties);
+      setCurrPos(pos)
+      setMutex(0)
   }
   const modal = (latlng) => {
     setShow(true);
@@ -71,11 +78,14 @@ const Home = (props) => {
     // const data = await Potty.PottyCreate(data)
   }
     useEffect(() => {
-        getLocation();
+        getLocation()
+        // .then((position) => getPotties(position), 
+        // (err) => console.log("Cant scan position", err))
     }, []);
     useEffect(() => {
-      getPotties();
-  }, []);
+      if (pos)
+        getPotties(pos);
+  }, [pos]);
     return (
         <>
           { (props.loggedIn && !add) ? (
@@ -100,7 +110,9 @@ const Home = (props) => {
           add={add}
           modal={modal} 
           newMarker={data} 
-          setData={setData} />
+          setData={setData} 
+          getPotties={getPotties} 
+          currPos={currPos} />
 
         </div>
         <button className="emergency" onClick={() => setEmergency(true)}>EMERGENCY</button>

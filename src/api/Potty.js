@@ -5,9 +5,9 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 const endpoint = "http://127.0.0.1:8000/"
 
-const PottyIndex = () => {
+const PottyIndex = (pos) => {
     // axios.defaults.withCredentials = false;
-    return axios.get(endpoint+'potty');
+    return axios.get(endpoint+'potty/'+pos.lat+'/'+pos.lng);
 }
 const PottyCreate = (body) => {
     // axios.defaults.withCredentials = true;
