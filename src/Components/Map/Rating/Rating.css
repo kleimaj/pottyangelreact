@@ -3,6 +3,12 @@
   font-size: 20px;
 }
 
+.tp {
+  width: 80px;
+  padding: 0;
+  margin: -20px;
+}
+
 .star-blank {
   color: white;
   text-shadow: 0 0 3px #000;

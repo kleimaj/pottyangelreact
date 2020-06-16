@@ -51,8 +51,8 @@ const MyMapComponent = (props) => {
         mapRef.current.setZoom(14);
       }, []);
       const center = props.pos || {
-        lat: 43,
-        lng: -79
+        lat: 37.7749,
+        lng: 122.4194
       }
       
       function distance(lat1, lon1, lat2, lon2) {

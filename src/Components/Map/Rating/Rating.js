@@ -9,24 +9,33 @@ const Rating = (props) => {
         let rating = parseInt(props.rating);
         for (let i = 0; i < rating; i++) {
             stars.push(
-                <FontAwesomeIcon key={i} icon={faStar}
-                    onClick={() => console.log(i, 'click')} />
+                // <img src="" />
+                <img className="tp" src="/images/tpselected.svg" />
+                // <FontAwesomeIcon key={i} icon={faStar}
+                //     onClick={() => console.log(i, 'click')} />
             )
         }
         for (let i = rating; i <= 4; i++) {
             stars.push(
-                <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
-                    onClick={() => console.log(i, 'click')} />
+                <img className="tp" src="/images/tp.svg" />
+                // <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
+                    // onClick={() => console.log(i, 'click')} />
             )
         }
     }
     else {
         stars = [
-            <FontAwesomeIcon key={0} icon={faStar} />,
-            <FontAwesomeIcon key={1} icon={faStar} />,
-            <FontAwesomeIcon key={2} icon={faStar} />,
-            <FontAwesomeIcon key={3} icon={faStar} className="star-blank"/>,
-            <FontAwesomeIcon key={4} icon={faStar} className="star-blank" />
+            <img className="tp" src="/images/tpselected.svg" />,
+            <img className="tp" src="/images/tpselected.svg" />,
+            <img className="tp" src="/images/tpselected.svg" />,
+            <img className="tp" src="/images/tp.svg" />,
+            <img className="tp" src="/images/tp.svg" />
+
+            // <FontAwesomeIcon key={0} icon={faStar} />,
+            // <FontAwesomeIcon key={1} icon={faStar} />,
+            // <FontAwesomeIcon key={2} icon={faStar} />,
+            // <FontAwesomeIcon key={3} icon={faStar} className="star-blank"/>,
+            // <FontAwesomeIcon key={4} icon={faStar} className="star-blank" />
         ]
     }
     return (

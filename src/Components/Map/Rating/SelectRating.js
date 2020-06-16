@@ -6,17 +6,28 @@ const Rating = (props) => {
     const [stars, setStars] = useState([]);
 
     const renderRating = (rating) => {
+        console.log(rating)
         let arr = [];
         for (let i = 0; i <= rating; i++) {
             arr.push(
-                <FontAwesomeIcon key={i} icon={faStar}
+                <img src="/images/tpselected.svg" 
+                    role="button"
+                    key={i}
+                    className="tp"
                     onClick={() => renderRating(i)} />
+                // <FontAwesomeIcon key={i} icon={faStar}
+                    // onClick={() => renderRating(i)} />
             )
         }
         for (let i = rating; i < 4; i++) {
             arr.push(
-                <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
-                    onClick={() => renderRating(i)} />
+                <img src="/images/tp.svg" 
+                role="button"
+                className="tp"
+                key={i}
+                onClick={() => renderRating(i)} />
+                // <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
+                //     onClick={() => renderRating(i)} />
             )
         }
         setStars(arr);
@@ -27,8 +38,11 @@ const Rating = (props) => {
         let arr = [];
         for (let i = 0; i < 5; i++) {
             arr.push(
-                <FontAwesomeIcon key={i} icon={faStar} className="star-blank"
-                    onClick={() => renderRating(i)} />
+                <img src="/images/tp.svg" 
+                role="button"
+                className="tp"
+                key={i}
+                onClick={() => renderRating(i)} />
             )
         }
         setStars(arr);
