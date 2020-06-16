@@ -1,0 +1,70 @@
+$primary-color: #F9D117;
+
+.landing-page {
+    position: relative;
+    z-index: 2;
+    margin-top: -20px;
+    background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100vw;
+    height: 95vh;
+    h1 {
+        font-size: 60px;
+        margin: 0;
+        padding: 25px;
+        text-align: center;
+    }
+    #logo {
+        width: 300px;
+        text-align: center;
+        margin: 0 auto;
+        padding-right: 50px;
+        margin: -70px;
+        margin-top: -90px;
+        // box-shadow: 5px 10px;
+    }
+    h3 {
+        font-size: 40px;
+        display: inline;
+        margin-top: -50px;
+        font-weight: normal;
+        cursor: default;
+    }
+    form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: -45px;
+        input {
+            border-radius: 14px;
+            border: 1px solid gray;
+            font-size: 30px;
+            padding: 10px;
+            margin: 15px;
+            width: 250px;
+            height: 25px;
+        }
+        .button-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: row;
+            margin: 15px;
+            button {
+                background-color: #3B3105;
+                cursor: pointer;
+                border: none;
+                font-size: 30px;
+                margin: 15px;
+                border-radius: 6px;
+                width: 150px;
+                height: 50px;
+                color: white;
+            }
+        }
+    }
+}

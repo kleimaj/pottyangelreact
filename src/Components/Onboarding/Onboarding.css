@@ -1,0 +1,102 @@
+.landing-page {
+  position: relative;
+  z-index: 2;
+  margin-top: -20px;
+  background-color: #F9D117;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100vw;
+  height: 95vh;
+}
+
+.landing-page h1 {
+  font-size: 60px;
+  margin: 0;
+  padding: 25px;
+  text-align: center;
+}
+
+.landing-page #logo {
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  padding-right: 50px;
+  margin: -70px;
+  margin-top: -90px;
+}
+
+.landing-page h3 {
+  font-size: 40px;
+  display: inline;
+  margin-top: -50px;
+  font-weight: normal;
+  cursor: default;
+}
+
+.landing-page form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: -45px;
+}
+
+.landing-page form input {
+  border-radius: 14px;
+  border: 1px solid gray;
+  font-size: 30px;
+  padding: 10px;
+  margin: 15px;
+  width: 250px;
+  height: 25px;
+}
+
+.landing-page form .button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 15px;
+}
+
+.landing-page form .button-group button {
+  background-color: #3B3105;
+  cursor: pointer;
+  border: none;
+  font-size: 30px;
+  margin: 15px;
+  border-radius: 6px;
+  width: 150px;
+  height: 50px;
+  color: white;
+}
+/*# sourceMappingURL=Onboarding.css.map */

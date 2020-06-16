@@ -13,8 +13,7 @@ export default [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
-                // "color": "#000000"
+                "visibility": "on"
             }
         ]
     },
@@ -23,10 +22,10 @@ export default [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#444444"
+                "color": "#ffffff"
             },
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
@@ -35,7 +34,10 @@ export default [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
             }
         ]
     },
@@ -56,7 +58,10 @@ export default [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
+            },
+            {
+                "color": "#ffffff"
             }
         ]
     },
@@ -72,6 +77,18 @@ export default [
     {
         "featureType": "poi",
         "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color":"#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.icon",
         "stylers": [
             {
                 "visibility": "off"
@@ -115,11 +132,25 @@ export default [
         ]
     },
     {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
         "featureType": "road",
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on",
             }
         ]
     },
@@ -137,7 +168,7 @@ export default [
         "elementType": "labels",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },

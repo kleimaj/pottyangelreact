@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import UserApi from '../../api/UserApi';
 import setAuthHeader from '../../utils/setAuthHeader';
+import './Onboarding.css'
 
 const Onboarding = (props) => {
 
@@ -98,14 +99,19 @@ const Onboarding = (props) => {
       }
 
     return (
-        <div>
+        <div className="landing-page">
+          <h1>Potty Angel</h1>
+          <img id="logo" src="/images/pottylogods.svg" />
+          <h3>High Quality Bathrooms Near You</h3>
             <form>
                 <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} required/>
                 {!passwordValid ? 
                 <p className="error-message">Password not strong enough</p> : null}
                 <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} required/>
+                <div className="button-group">
                 <button onClick={handleSignup}>Sign Up</button>
                 <button onClick={handleLogin}>Log In</button>
+                </div>
             </form>
         </div>
     );
