@@ -224,6 +224,7 @@ const MyMapComponent = (props) => {
         // icon={{
         //   url: '/toilet.svg'
         // }}
+          animation= {window.google.maps.Animation.DROP}
           onClick={() => {
             setActive(marker);
             setZoom(15);
@@ -269,7 +270,7 @@ const Search = (props) => {
     <Combobox onSelect={async (address) => {
       setValue(address, false);
       clearSuggestions();
-      
+
       try {
         const res = await getGeocode({address});
         const {lat, lng} = await getLatLng(res[0]);

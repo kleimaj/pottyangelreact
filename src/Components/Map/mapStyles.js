@@ -1,19 +1,20 @@
 export default [
-    {
-        "featureType": "all",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
+    // {
+    //     "featureType": "all",
+    //     "elementType": "labels",
+    //     "stylers": [
+    //         {
+    //             "visibility": "off"
+    //         }
+    //     ]
+    // },
     {
         "featureType": "administrative",
         "elementType": "labels",
         "stylers": [
             {
                 "visibility": "off"
+                // "color": "#000000"
             }
         ]
     },

@@ -1,9 +1,11 @@
 $tablet-width: 768px;
 $desktop-width: 1024px;
+$primary-color: #F9D117;
 
 header {
-    background-color: #000;
-    color: #fff;
+    background-color: $primary-color;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
 
     position: absolute;
     top: 0;
@@ -14,7 +16,9 @@ header {
     h2 {
         display: inline-block;
         margin: 25px;
-        color: white;
+        color: #000;
+        font-family: Arial, Helvetica, sans-serif;
+
     }
     .left {
         display: inline-block;
@@ -25,9 +29,11 @@ header {
         right: 0;
     }
     .logout {
-        background-color: black;
+        background-color: $primary-color;
         border: none;
         cursor: pointer;
+        font-family: Arial, Helvetica, sans-serif;
+
         font-size: medium;
     }
 }
