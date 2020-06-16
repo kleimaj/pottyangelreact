@@ -36,6 +36,19 @@
   height: 80vh;
 }
 
+.info-window {
+  text-align: center;
+}
+
+.info-window h2 {
+  font-size: 25px;
+}
+
+.info-window .address {
+  font-size: 20px;
+  margin: 15px;
+}
+
 .search {
   position: absolute;
   top: 1rem;

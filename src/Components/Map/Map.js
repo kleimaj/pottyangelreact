@@ -39,7 +39,7 @@ const MyMapComponent = (props) => {
       const [minDist, setDist] = useState(null);
       const [centerCoords, setCenter] = useState()
       const [address, setAddress] = useState(null)
-      const [zoom, setZoom] = useState(11);
+      const [zoom, setZoom] = useState(14);
 
       const mapRef = useRef();
       const onMapLoad = useCallback((map) => {
@@ -198,7 +198,7 @@ const MyMapComponent = (props) => {
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
-        zoom={zoom || 11} 
+        zoom={zoom || 14} 
         center={centerCoords || center} 
         options={options}
         onLoad={onMapLoad}
@@ -212,7 +212,8 @@ const MyMapComponent = (props) => {
           }}
           position={props.pos}
           icon={{
-            url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            url: '/images/avatar.png',
+            scaledSize: new window.google.maps.Size(40,40)
           }} /> : null}
         {markers.map((marker,idx) => 
         {
@@ -221,9 +222,10 @@ const MyMapComponent = (props) => {
         return <Marker 
           key={idx} 
           position={{lat: parseFloat(marker.latitude), lng: parseFloat(marker.longitude)}} 
-        // icon={{
-        //   url: '/toilet.svg'
-        // }}
+        icon={{
+          url: '/images/custommarker2.svg',
+          scaledSize: new window.google.maps.Size(90,100)
+        }}
           animation= {window.google.maps.Animation.DROP}
           onClick={() => {
             setActive(marker);
@@ -236,13 +238,12 @@ const MyMapComponent = (props) => {
         (<InfoWindow
             position={{lat: parseFloat(active.latitude), lng: parseFloat(active.longitude)}}
             onCloseClick={() => setActive(null)}>
-            <div className="infoWindow">
+            <div className="info-window">
                 <h2><Link to={"/potty/"+active.id}>{active.name}</Link></h2>
-        <a target="_blank" href=
-        {"https://www.google.com/maps/search/?api=1&query="+
-        // active.latitude+','+active.longitude}
-        address}
-        >{address || 'Directions Here'}</a>
+                <a className="address" 
+                target="_blank" 
+                href={"https://www.google.com/maps/search/?api=1&query="+address}
+                >{address || 'Directions Here'}</a>
                 <Rating rating={active.rating} />
              </div>
         </InfoWindow>) : null}

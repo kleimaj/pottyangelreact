@@ -115,7 +115,7 @@ const Home = (props) => {
           currPos={currPos} />
 
         </div>
-        <button className="emergency" onClick={() => setEmergency(true)}>EMERGENCY</button>
+        <button className="emergency" onClick={() => setEmergency(true)}>💩 EMERGENCY 💩</button>
         </>
     )
 }

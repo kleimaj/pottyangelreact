@@ -1,3 +1,8 @@
+.rating {
+  margin: 15px;
+  font-size: 20px;
+}
+
 .star-blank {
   color: white;
   text-shadow: 0 0 3px #000;

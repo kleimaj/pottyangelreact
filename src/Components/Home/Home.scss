@@ -35,6 +35,16 @@ margin-top: 5px;
 z-index: 1;
 height: 80vh;
 }
+.info-window {
+    text-align: center;
+    h2 {
+        font-size: 25px;
+    }
+    .address {
+        font-size: 20px;
+        margin: 15px;
+    }
+}
 .search {
     position: absolute;
     top: 1rem;
