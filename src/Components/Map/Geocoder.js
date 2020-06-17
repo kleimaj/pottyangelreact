@@ -2,7 +2,7 @@
 // AIzaSyB_tSp7ilLdqHHWttFNJRXYyqrUg-Ad-TU
 import Geocode from "react-geocode";
 
-Geocode.setApiKey(process.env.API_KEY_2);
+Geocode.setApiKey(process.env.REACT_APP_API_KEY_2);
 
 export async function getCurrentAddress(location) {
     const res = await Geocode.fromLatLng(location.latitude, location.longitude).then(

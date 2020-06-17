@@ -6,7 +6,7 @@ import Rating from './Rating/Rating';
 import Potty from '../../api/Potty';
 import { getCurrentAddress } from './Geocoder';
 import Search from './Search';
-
+// require('dotenv').config()
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -24,7 +24,7 @@ const options = {
 }
 const MyMapComponent = (props) => {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: process.env.API_KEY_1,
+        googleMapsApiKey: process.env.REACT_APP_API_KEY_1,
         libraries
       })
       const [markers, setMarkers] = useState([]);
