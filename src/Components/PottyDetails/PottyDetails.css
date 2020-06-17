@@ -1,0 +1,177 @@
+.details-container {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.details-container h1 {
+  font-size: 35px;
+}
+
+.details-container a {
+  font-size: 25px;
+}
+
+.details-container .comment-container {
+  width: 100vw;
+  border-top: 1px solid gray;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.details-container .comment-container h2 {
+  font-size: 30px;
+}
+
+.details-container .comment-container .tp {
+  width: 80px;
+}
+
+.details-container .comment-container .comment-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.details-container .comment-container .comment {
+  width: 300px;
+  margin: 15px;
+  display: inline-block;
+}
+
+.details-container .comment-container .comment h3 {
+  text-align: left;
+  padding: 5px;
+  font-size: 25px;
+  font-weight: normal;
+  margin: 15px;
+}
+
+.details-container .comment-container .comment p {
+  font-size: 20px;
+  padding: 0 15px;
+}
+
+.details-container .comment-container .comment .border {
+  margin: 15px 0;
+  border-radius: 14px;
+  border: 1px solid #979797;
+}
+
+.details-container .comment-container .comment .author {
+  margin: 0;
+  position: relative;
+  bottom: 15px;
+  left: 50px;
+}
+
+.details-container .tp {
+  width: 120px;
+}
+
+@media screen and (max-width: 1024px) {
+  .details-container h1 {
+    font-size: 30px;
+  }
+  .details-container a {
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+  }
+  .details-container .tp {
+    width: 80px;
+  }
+  .details-container .comment-container h2 {
+    font-size: 25px;
+  }
+}
+
+form.create-review {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-top: 1px solid gray;
+  width: 100vw;
+}
+
+form.create-review h4 {
+  font-size: 30px;
+}
+
+form.create-review p {
+  margin: 0;
+  font-size: 18px;
+}
+
+form.create-review input {
+  display: block;
+  margin: 15px;
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+form.create-review textarea {
+  display: block;
+  margin: 15px;
+  width: 300px;
+  height: 150px;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  resize: none;
+}
+
+form.create-review button {
+  display: block;
+  margin: 15px;
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=PottyDetails.css.map */

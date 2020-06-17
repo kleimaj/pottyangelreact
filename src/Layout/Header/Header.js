@@ -21,9 +21,9 @@ const renderDesktop = (props) => {
                   </Link>
                 </div>
                 <div className="right">
-                  <Link to='/settings'>
+                  {/* <Link to='/settings'>
                     <h2>Settings</h2>
-                  </Link>
+                  </Link> */}
                   {/* <Link to='/logout'> */}
                   <button className="logout"
                           onClick={() => {
@@ -42,9 +42,9 @@ const renderDesktop = (props) => {
                   </Link>
                 </div>
                 <div className="right">
-                  <Link to='/settings'>
+                  {/* <Link to='/settings'>
                     <h2>Settings</h2>
-                  </Link>
+                  </Link> */}
                   <Link to='signup'>
                   <h2>Sign-up</h2>
                   </Link>
@@ -59,17 +59,36 @@ const renderMobile = (props) => {
         <header>
             {props.loggedIn ? 
             <div className="icons">
-                <FontAwesomeIcon icon={faCog} />
-                <FontAwesomeIcon icon={faToiletPaper} />
-                <FontAwesomeIcon icon={faPlus} />
-
-            </div>
+               <div className="left">
+                  <Link to='/'>
+                    <h2>Potty Angel</h2>
+                  </Link>
+                </div>
+                <div className="right">
+                  <button className="logout"
+                          onClick={() => {
+                            props.logout()
+                          }}>
+                    <h2>Logout</h2>
+                  </button>
+                </div>
+            </div>    
             :
             <div className="icons">
-                <FontAwesomeIcon icon={faCog} />
-                <FontAwesomeIcon icon={faToiletPaper} />
-                <FontAwesomeIcon icon={faUser} />
-            </div>    
+               <div className="left">
+                  <Link to='/'>
+                    <h2>Potty Angel</h2>
+                  </Link>
+                </div>
+                <div className="right">
+                  {/* <Link to='/settings'>
+                    <h2>Settings</h2>
+                  </Link> */}
+                  <Link to='signup'>
+                  <h2>Sign-up</h2>
+                  </Link>
+                </div>
+                </div>
         }
         </header>
     )

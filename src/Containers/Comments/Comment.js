@@ -3,12 +3,18 @@ import Rating from '../../Components/Map/Rating/Rating';
 
 const Comment = (props) => {
     return (
+        <>
         <div className="comment">
+            <div className="border">
             <h3>{props.comment.title}</h3>
             <Rating rating={props.comment.rating}/>
-            <p>By {props.comment.author}</p>
             <p>{props.comment.body}</p>
+            </div>
+            <p className="author">By {props.comment.author} 👼</p>
+
         </div>
+        
+        </>
     )
 }
 

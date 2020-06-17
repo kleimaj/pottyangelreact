@@ -5,17 +5,9 @@ import mapStyles from './mapStyles';
 import Rating from './Rating/Rating';
 import Potty from '../../api/Potty';
 import { getCurrentAddress } from './Geocoder';
+import Search from './Search';
 
-import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 
-import {
-  Combobox, 
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption
-} from '@reach/combobox';
-import "@reach/combobox/styles.css";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: '100vw',
@@ -25,12 +17,14 @@ const options = {
   styles: mapStyles,
   disableDefaultUI: true,
   // mapTypeControl: true,
+  setClickableIcons: false,
+  clickableIcons: false,
   draggable: true,
   zoomControl: true
 }
 const MyMapComponent = (props) => {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyCkVETyJKT6I-sjzL12zkT57ji7TZT2tQA",
+        googleMapsApiKey: process.env.API_KEY_1,
         libraries
       })
       const [markers, setMarkers] = useState([]);
@@ -193,8 +187,7 @@ const MyMapComponent = (props) => {
 
     return (
       <>
-        <Search currPos={props.currPos} panTo={panTo} />
-
+        {/* <Search currPos={props.currPos} panTo={panTo} /> */}
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
@@ -250,51 +243,6 @@ const MyMapComponent = (props) => {
       </GoogleMap>
       </>
     );
-}
-
-const Search = (props) => {
-  const {
-    ready,
-    value,
-    suggestions: {status, data}, 
-    setValue, 
-    clearSuggestions
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      location: {lat: () => props.currPos.lat, lng: () => props.currPos.lng},
-      radius: 200 * 1000
-    },
-  });
-  
-  return (
-    <div className="search">
-    <Combobox onSelect={async (address) => {
-      setValue(address, false);
-      clearSuggestions();
-
-      try {
-        const res = await getGeocode({address});
-        const {lat, lng} = await getLatLng(res[0]);
-        props.panTo({lat, lng});
-      }
-      catch (error) {
-        console.log(error);
-      }
-    }}>
-      <ComboboxInput value={value} onChange={(e) => {
-        setValue(e.target.value);
-      }} disabled={!ready} placeholder={"Enter an address"} />
-        <ComboboxPopover>
-          <ComboboxList className="suggestion-list">
-            {status === "OK" &&
-              data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-    </Combobox>
-    </div>
-  )
 }
 
 export default MyMapComponent;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Potty from '../../api/Potty';
 import Rating from '../Map/Rating/Rating';
 import Comments from '../../Containers/Comments/Comments';
+import './PottyDetails.css'
 
 const PottyDetails = (props) => {
     const [potty, setPotty] = useState(null)
@@ -19,7 +20,7 @@ const PottyDetails = (props) => {
     }, [])
 
     return (
-        <div className="potty">
+        <div className="details-container">
             {potty ? (
             <>
                 <h1>{potty.name}</h1>

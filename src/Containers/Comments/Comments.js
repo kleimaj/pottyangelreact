@@ -34,12 +34,19 @@ const Comments = (props) => {
     return (
         <>
         <div className="comment-container">
+        {comments.length ? 
+        <h2>Reviews</h2>
+        :
+        <h2>No Reviews Yet!</h2>}
+        <div className="comment-flex">
             {comments.map((comment, idx) => 
         <Comment comment={comment} key={idx}/>)}
         </div>
+        </div>
         {props.loggedIn ? (
-            <form>
+            <form className="create-review">
                 <h4>Leave a Review</h4>
+                <p>Rate 1-5</p>
                 <Rating setRating={setRating}/>
                 <input type="text" placeholder="title" onChange={(e) => setTitle(e.target.value)} required/>
                 <textarea type="text" placeholder="body" onChange={(e) => setBody(e.target.value)} required/>

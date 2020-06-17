@@ -1,0 +1,138 @@
+$desktop-width: 1024px;
+
+.details-container {
+    width: 100vw;
+    // height: 100vh;
+    h1 {
+        font-size: 35px;
+    }
+    a {
+        font-size: 25px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    .comment-container {
+        width: 100vw;
+        border-top: 1px solid gray;
+        text-align: center;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        h2 {
+            font-size: 30px;
+        }
+        .tp {
+            width: 80px;
+        }
+        .comment-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            align-content: center;
+            justify-content: space-around;
+        }
+        .comment {
+            width: 300px;
+            // height: 200px;
+            margin: 15px;
+            display: inline-block;
+            h3 {
+                text-align: left;
+                padding: 5px;
+                font-size: 25px;
+                font-weight: normal;
+                margin: 15px;
+            }
+            p {
+                font-size: 20px;
+                padding: 0 15px;
+            }
+
+            .border {
+                margin: 15px 0;
+                border-radius: 14px;
+                // height: 225px;
+                border: 1px solid #979797;
+                @media screen and (max-width: $desktop-width) {
+                    
+                }
+            }
+
+            .author {
+                margin: 0;
+                position: relative;
+                bottom: 15px;
+                left: 50px;
+            }
+        }
+    }
+    .tp {
+        width: 120px;
+    }
+    @media screen and (max-width: $desktop-width) {
+        h1 {
+            font-size: 30px;
+        }
+        a {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+        }
+        .tp {
+            width: 80px;
+        }
+        .comment-container {
+            h2 {
+                font-size: 25px;
+            }
+        }
+    }
+}
+form.create-review {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-top: 1px solid gray;
+    width: 100vw;
+    h4 {
+        font-size: 30px;
+    }
+    p {
+        margin: 0;
+        font-size: 18px;
+    }
+    input {
+        display: block;
+        margin: 15px;
+        width: 200px;
+        height: 30px;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    textarea {
+        display: block;
+        margin: 15px;
+        width: 300px;
+        height: 150px;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        resize: none;
+    }
+    button {
+        display: block;
+        margin: 15px;
+        width: 150px;
+        height: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}

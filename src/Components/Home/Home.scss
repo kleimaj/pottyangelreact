@@ -1,4 +1,6 @@
 $primary-color: #F9D117;
+$tablet-width: 768px;
+$desktop-width: 1024px;
 
 .add-button {
     position: absolute;
@@ -13,6 +15,12 @@ $primary-color: #F9D117;
     right: 0;
     margin-bottom: 70px;
     border-radius: 5px;
+    
+    @media screen and (max-width: $desktop-width) {
+        // background-color: white;
+        border: 1px solid black;
+    }
+
 }
 .ui-message {
     cursor: default;
@@ -26,6 +34,12 @@ $primary-color: #F9D117;
   margin-top: 420px;
   background-color: white;
   opacity: .8;
+  @media screen and (max-width: $desktop-width) {
+    position: relative;
+    margin-top: 300px;
+    margin: 10px;
+    margin: 0 auto;
+  }
 }
 .map {
 background-color: gray;
@@ -43,6 +57,18 @@ height: 80vh;
     .address {
         font-size: 20px;
         margin: 15px;
+    }
+    @media screen and (max-width: $desktop-width) {
+        h2 {
+            font-size: 20px;
+        }
+        .address {
+            font-size: 18px;
+        }
+        .tp {
+            width: 55px;
+            margin: -15px;
+        }
     }
 }
 .search {

@@ -35,6 +35,14 @@ header .logout {
 }
 
 .icons {
-  font-size: 50px;
+  font-size: 20px;
+}
+
+.icons h2 {
+  font-size: 25px;
+}
+
+.icons button {
+  height: 0px;
 }
 /*# sourceMappingURL=Header.css.map */

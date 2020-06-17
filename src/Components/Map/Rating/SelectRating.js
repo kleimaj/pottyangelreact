@@ -8,24 +8,27 @@ const Rating = (props) => {
     const renderRating = (rating) => {
         console.log(rating)
         let arr = [];
-        for (let i = 0; i <= rating; i++) {
+        let i = 0
+        for (i = 0; i <= rating; i++) {
             arr.push(
                 <img src="/images/tpselected.svg" 
                     role="button"
                     key={i}
                     className="tp"
-                    onClick={() => renderRating(i)} />
+                    // onClick={() => renderRating(i)} 
+                    />
                 // <FontAwesomeIcon key={i} icon={faStar}
                     // onClick={() => renderRating(i)} />
             )
         }
-        for (let i = rating; i < 4; i++) {
+        for (i; i <= 4; i++) {
             arr.push(
                 <img src="/images/tp.svg" 
                 role="button"
                 className="tp"
                 key={i}
-                onClick={() => renderRating(i)} />
+                // onClick={() => renderRating(i)} 
+                />
                 // <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
                 //     onClick={() => renderRating(i)} />
             )
@@ -37,6 +40,7 @@ const Rating = (props) => {
     useEffect(() => {
         let arr = [];
         for (let i = 0; i < 5; i++) {
+            console.log(i)
             arr.push(
                 <img src="/images/tp.svg" 
                 role="button"

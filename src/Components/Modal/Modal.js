@@ -5,22 +5,25 @@ import './Modal.css';
 const Modal = (props) => {
     const [name, setName] = useState('');
     const [rating, setRating] = useState(null);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (name && rating) {
+            props.submitModal(name,rating);
+        }
+    }
     return (
         <div className="modal">
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                if (name && rating) {
-                    props.submitModal(name,rating);
-                }
-                //api call, return values to Home.js
-            }}>
+            <form>
                 <h2>Potty Name</h2>
                 <input onChange={(e) => setName(e.target.value)}/>
                 <h2>Rating</h2>
                 <Rating setRating={setRating}/>
-                <button>Create Potty</button>
             </form>
+            <div className="modal-button-group">
+                <button onClick={handleSubmit}>Create Potty</button>
                 <button onClick={() => props.setShow(false)}>Cancel</button>
+            </div>
         </div>
     );
 }

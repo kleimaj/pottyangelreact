@@ -21,6 +21,10 @@
   padding: 5px;
 }
 
+.modal form {
+  margin-top: -30px;
+}
+
 .modal input {
   width: 200px;
   height: 30px;
@@ -32,5 +36,27 @@
   width: 100px;
   height: 60px;
   font-size: 20px;
+}
+
+.modal .modal-button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media screen and (max-width: 1024px) {
+  .modal form input {
+    border: 1px solid black;
+  }
 }
 /*# sourceMappingURL=Modal.css.map */
