@@ -49,7 +49,11 @@ $desktop-width: 1024px;
             }
             p {
                 font-size: 20px;
+                text-align: left;
                 padding: 0 15px;
+            }
+            .author {
+                text-align: center;
             }
 
             .border {

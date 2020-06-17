@@ -187,7 +187,7 @@ const MyMapComponent = (props) => {
 
     return (
       <>
-        {/* <Search currPos={props.currPos} panTo={panTo} /> */}
+        <Search currPos={props.currPos} panTo={panTo} />
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
