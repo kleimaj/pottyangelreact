@@ -3,6 +3,8 @@ import jwt_decode from 'jwt-decode';
 import UserApi from '../../api/UserApi';
 import setAuthHeader from '../../utils/setAuthHeader';
 import './Onboarding.css'
+import Lottie from 'react-lottie';
+import * as animationData from './logoanimation2.json'
 
 const Onboarding = (props) => {
 
@@ -30,6 +32,15 @@ const Onboarding = (props) => {
                password: password}
             );
     }
+
+    const defaultOptions = {
+      loop: true,
+      autoplay: true, 
+      animationData: animationData.default,
+      // rendererSettings: {
+      //   preserveAspectRatio: 'xMidYMid slice'
+      // }
+    };
 
     const login = (user) => {
         UserApi.login(user)
@@ -101,7 +112,15 @@ const Onboarding = (props) => {
     return (
         <div className="landing-page">
           <h1>Potty Angel</h1>
-          <img id="logo" src="/images/pottylogods.svg" />
+          {/* <img id="logo" src="/images/pottylogods.svg" /> */}
+          <div id="logo-animation">
+          <Lottie options={defaultOptions}
+              height={350}
+              width={350}
+              // isStopped={this.state.isStopped}
+              // isPaused={this.state.isPaused}
+              />
+              </div>
           <h3>High Quality Bathrooms Near You</h3>
             <form>
                 <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} required/>

@@ -17,7 +17,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
 }
 
 .landing-page h1 {
@@ -36,10 +36,14 @@
   margin-top: -90px;
 }
 
+.landing-page #logo-animation {
+  margin-top: -50px;
+}
+
 .landing-page h3 {
   font-size: 40px;
   display: inline;
-  margin-top: -50px;
+  margin-top: -70px;
   font-weight: normal;
   cursor: default;
 }
@@ -58,7 +62,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: -45px;
+  margin-top: -25px;
 }
 
 .landing-page form input {

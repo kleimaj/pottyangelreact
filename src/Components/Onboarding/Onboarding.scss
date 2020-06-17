@@ -12,7 +12,7 @@ $desktop-width: 1024px;
     justify-content: space-evenly;
     flex-direction: column;
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
     h1 {
         font-size: 60px;
         margin: 0;
@@ -28,10 +28,13 @@ $desktop-width: 1024px;
         margin-top: -90px;
         // box-shadow: 5px 10px;
     }
+    #logo-animation {
+        margin-top: -50px;
+    }
     h3 {
         font-size: 40px;
         display: inline;
-        margin-top: -50px;
+        margin-top: -70px;
         font-weight: normal;
         cursor: default;
     }
@@ -40,7 +43,7 @@ $desktop-width: 1024px;
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    margin-top: -45px;
+    margin-top: -25px;
         input {
             border-radius: 14px;
             border: 1px solid gray;
