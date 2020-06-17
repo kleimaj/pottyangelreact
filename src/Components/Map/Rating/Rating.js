@@ -10,14 +10,14 @@ const Rating = (props) => {
         for (let i = 0; i < rating; i++) {
             stars.push(
                 // <img src="" />
-                <img className="tp" src="/images/tpselected.svg" />
+                <img className="tp" key={i} src="/images/tpselected.svg" />
                 // <FontAwesomeIcon key={i} icon={faStar}
                 //     onClick={() => console.log(i, 'click')} />
             )
         }
         for (let i = rating; i <= 4; i++) {
             stars.push(
-                <img className="tp" src="/images/tp.svg" />
+                <img className="tp" key={i} src="/images/tp.svg" />
                 // <FontAwesomeIcon key={i+1} icon={faStar} className="star-blank"
                     // onClick={() => console.log(i, 'click')} />
             )

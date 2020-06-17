@@ -84,7 +84,7 @@ const renderMobile = (props) => {
                   {/* <Link to='/settings'>
                     <h2>Settings</h2>
                   </Link> */}
-                  <Link to='signup'>
+                  <Link to='/signup/' replace>
                   <h2>Sign-up</h2>
                   </Link>
                 </div>
