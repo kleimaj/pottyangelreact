@@ -115,8 +115,8 @@ const Onboarding = (props) => {
           {/* <img id="logo" src="/images/pottylogods.svg" /> */}
           <div id="logo-animation">
           <Lottie options={defaultOptions}
-              height={350}
-              width={350}
+              height={300}
+              width={300}
               // isStopped={this.state.isStopped}
               // isPaused={this.state.isPaused}
               />
