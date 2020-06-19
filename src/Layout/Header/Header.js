@@ -14,8 +14,9 @@ const renderDesktop = (props) => {
             {props.loggedIn ? 
             <div className="desktop">
                 <div className="left">
-                  <Link to='/'>
-                    <h2>Potty Angel</h2>
+                <Link to='/'>
+                    {/* <h2>Potty Angel</h2> */}
+                    <img id="header-logo" src="/images/cautionlogo.svg"/>
                   </Link>
                 </div>
                 <div className="right">
@@ -58,20 +59,19 @@ const renderMobile = (props) => {
         <header>
             {props.loggedIn ? 
             <div className="icons">
-               <div className="left">
+               <Link to='/'>
+                    <h2>Map</h2>
+                  </Link>
                <Link to='/'>
                     {/* <h2>Potty Angel</h2> */}
                     <img id="header-logo" src="/images/cautionlogo.svg"/>
                   </Link>
-                </div>
-                <div className="right">
                   <button className="logout"
                           onClick={() => {
                             props.logout()
                           }}>
                     <h2>Logout</h2>
                   </button>
-                </div>
             </div>    
             :
             <div className="icons">

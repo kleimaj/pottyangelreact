@@ -25,7 +25,8 @@ header .right {
   display: inline-block;
   position: absolute;
   right: 0;
-  margin-top: 5px;
+  margin-right: 10px;
+  margin-top: 7px;
 }
 
 header .logout {
@@ -35,6 +36,7 @@ header .logout {
   cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
   font-size: medium;
+  position: relative;
 }
 
 header #header-logo {
@@ -58,6 +60,7 @@ header #header-logo {
       justify-content: space-around;
   font-size: 20px;
   margin: 0 15px;
+  margin-right: 10px;
 }
 
 .icons h2 {
@@ -67,5 +70,6 @@ header #header-logo {
 
 .icons button {
   height: 0px;
+  margin-bottom: 30px;
 }
 /*# sourceMappingURL=Header.css.map */
