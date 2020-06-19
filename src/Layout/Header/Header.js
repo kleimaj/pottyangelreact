@@ -20,9 +20,9 @@ const renderDesktop = (props) => {
                   </Link>
                 </div>
                 <div className="right">
-                  {/* <Link to='/settings'>
-                    <h2>Settings</h2>
-                  </Link> */}
+                  <Link to='/'>
+                    <h2>Map</h2>
+                  </Link>
                   {/* <Link to='/logout'> */}
                   <button className="logout"
                           onClick={() => {

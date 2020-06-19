@@ -19,6 +19,15 @@
   }
 }
 
+.target-button {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
 .ui-message {
   cursor: default;
   margin: 10px auto;

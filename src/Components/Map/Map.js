@@ -188,6 +188,9 @@ const MyMapComponent = (props) => {
     return (
       <>
         <Search currPos={props.currPos} panTo={panTo} />
+        {props.pos ?
+        <img role="button" onClick={() => panTo(props.pos)} className="target-button" src="/images/targetbutton.svg"/>
+        : null}
         <GoogleMap 
         mapContainerStyle={mapContainerStyle}
         onClick={mapClick}
@@ -230,7 +233,10 @@ const MyMapComponent = (props) => {
         {active ? 
         (<InfoWindow
             position={{lat: parseFloat(active.latitude), lng: parseFloat(active.longitude)}}
-            onCloseClick={() => setActive(null)}>
+            onCloseClick={() => {
+              setActive(null) 
+              props.setEmergency(null)
+            }}>
             <div className="info-window">
                 <h2><Link to={"/potty/"+active.id}>{active.name}</Link></h2>
                 <a className="address" 

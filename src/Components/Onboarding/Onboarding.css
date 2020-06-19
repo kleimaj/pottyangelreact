@@ -42,7 +42,6 @@
 
 .landing-page h3 {
   font-size: 40px;
-  display: inline;
   margin-top: -70px;
   font-weight: normal;
   cursor: default;
@@ -63,6 +62,13 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: -25px;
+}
+
+.landing-page form .error-message {
+  display: inline;
+  padding: 10px;
+  margin: 0;
+  color: red;
 }
 
 .landing-page form input {
@@ -107,7 +113,7 @@
 @media screen and (max-width: 1024px) {
   .landing-page {
     width: 100vw;
-    height: 600px;
+    height: 650px;
   }
   .landing-page h1 {
     font-size: 50px;

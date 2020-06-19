@@ -33,12 +33,18 @@ $desktop-width: 1024px;
     }
     h3 {
         font-size: 40px;
-        display: inline;
+        // display: inline;
         margin-top: -70px;
         font-weight: normal;
         cursor: default;
     }
     form {
+        .error-message {
+            display: inline;
+            padding: 10px;
+            margin: 0;
+            color: red;
+        }
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -74,7 +80,7 @@ $desktop-width: 1024px;
     }
     @media screen and (max-width: $desktop-width) {
     width: 100vw;
-    height: 600px;
+    height: 650px;
 
         h1 {
             font-size: 50px;
