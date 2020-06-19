@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUser, faToiletPaper, faPlus } from '@fortawesome/free-solid-svg-icons'
 import './Header.css';
 
 const Header = (props) => {
@@ -16,14 +14,15 @@ const renderDesktop = (props) => {
             {props.loggedIn ? 
             <div className="desktop">
                 <div className="left">
-                  <Link to='/'>
-                    <h2>Potty Angel</h2>
+                <Link to='/'>
+                    {/* <h2>Potty Angel</h2> */}
+                    <img id="header-logo" src="/images/cautionlogo.svg"/>
                   </Link>
                 </div>
                 <div className="right">
-                  {/* <Link to='/settings'>
-                    <h2>Settings</h2>
-                  </Link> */}
+                  <Link to='/'>
+                    <h2>Map</h2>
+                  </Link>
                   {/* <Link to='/logout'> */}
                   <button className="logout"
                           onClick={() => {
@@ -38,13 +37,14 @@ const renderDesktop = (props) => {
             <div className="desktop">
                 <div className="left">
                   <Link to='/'>
-                    <h2>Potty Angel</h2>
+                    {/* <h2>Potty Angel</h2> */}
+                    <img id="header-logo" src="/images/cautionlogo.svg"/>
                   </Link>
                 </div>
                 <div className="right">
-                  {/* <Link to='/settings'>
-                    <h2>Settings</h2>
-                  </Link> */}
+                  <Link to='/'>
+                    <h2>Map</h2>
+                  </Link>
                   <Link to='signup'>
                   <h2>Sign-up</h2>
                   </Link>
@@ -59,35 +59,32 @@ const renderMobile = (props) => {
         <header>
             {props.loggedIn ? 
             <div className="icons">
-               <div className="left">
-                  <Link to='/'>
-                    <h2>Potty Angel</h2>
+               <Link to='/'>
+                    <h2>Map</h2>
                   </Link>
-                </div>
-                <div className="right">
+               <Link to='/'>
+                    {/* <h2>Potty Angel</h2> */}
+                    <img id="header-logo" src="/images/cautionlogo.svg"/>
+                  </Link>
                   <button className="logout"
                           onClick={() => {
                             props.logout()
                           }}>
                     <h2>Logout</h2>
                   </button>
-                </div>
             </div>    
             :
             <div className="icons">
-               <div className="left">
                   <Link to='/'>
-                    <h2>Potty Angel</h2>
+                    <h2>Map</h2>
                   </Link>
-                </div>
-                <div className="right">
-                  {/* <Link to='/settings'>
-                    <h2>Settings</h2>
-                  </Link> */}
+                  <Link to='/'>
+                    {/* <h2>Potty Angel</h2> */}
+                    <img id="header-logo" src="/images/cautionlogo.svg"/>
+                  </Link>
                   <Link to='/signup/' replace>
-                  <h2>Sign-up</h2>
+                  <h2>Login</h2>
                   </Link>
-                </div>
                 </div>
         }
         </header>

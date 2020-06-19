@@ -33,12 +33,13 @@ $desktop-width: 1024px;
             flex-wrap: wrap;
             align-items: center;
             align-content: center;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
         .comment {
-            width: 300px;
+            width: 400px;
             // height: 200px;
             margin: 15px;
+            align-self: baseline;
             display: inline-block;
             h3 {
                 text-align: left;
@@ -92,6 +93,9 @@ $desktop-width: 1024px;
         .comment-container {
             h2 {
                 font-size: 25px;
+            }
+            .comment {
+                width: 300px;
             }
         }
     }

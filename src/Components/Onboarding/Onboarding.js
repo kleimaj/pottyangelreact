@@ -11,6 +11,8 @@ const Onboarding = (props) => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const [passwordValid, setValid] = useState(true);
+    const [usernameError, setError] = useState(false);
+    const [loginError, setLoginError] = useState(false);
 
     const checkPasswordStrength = password => {
         let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%\^&\*])(?=.{8,})")
@@ -19,18 +21,32 @@ const Onboarding = (props) => {
 
     const handleSignup = (e) => {
         e.preventDefault();
+        if (!username) {
+          return
+        }
         if (!checkPasswordStrength(password)) {
             setValid(false);
+            return
         }
+        setValid(true)
+        setLoginError(false);
         register({username: username,
                   password: password}
                 );
     }
     const handleLogin = (e) => {
-        e.preventDefault();
+      e.preventDefault();
+      if (username && password) {        
+        setValid(true)
+        setLoginError(false)
+        setError(false)
         login({username: username,
                password: password}
             );
+      }
+      else {
+        setValid(false);
+      }
     }
 
     const defaultOptions = {
@@ -43,6 +59,7 @@ const Onboarding = (props) => {
     };
 
     const login = (user) => {
+      setLoginError(false)
         UserApi.login(user)
         .then(res => {
           if (res.status === 200) {
@@ -64,7 +81,10 @@ const Onboarding = (props) => {
             // })
           }
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err)
+          setLoginError(true);
+        });
       }
       const register = (user) => {
         UserApi.register(user)
@@ -88,7 +108,10 @@ const Onboarding = (props) => {
                     props.setUser(decoded.username);
 
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                  console.log(err)
+                  setLoginError(true)
+                })
             //   // get the token from the response
             //   const token = res.data.token;
             //   // set the token to local storage
@@ -106,7 +129,11 @@ const Onboarding = (props) => {
             //   })
             }
           })
-          .catch(err => console.log(err));
+          .catch(err => 
+            {
+              console.log(err)
+              setError(true);
+            });
       }
 
     return (
@@ -115,14 +142,20 @@ const Onboarding = (props) => {
           {/* <img id="logo" src="/images/pottylogods.svg" /> */}
           <div id="logo-animation">
           <Lottie options={defaultOptions}
-              height={350}
-              width={350}
+              height={300}
+              width={300}
               // isStopped={this.state.isStopped}
               // isPaused={this.state.isPaused}
               />
               </div>
           <h3>High Quality Bathrooms Near You</h3>
-            <form>
+            <form onSubmit={handleLogin}>
+                {usernameError ? 
+                <p className="error-message">Username already taken</p> :
+                null}
+                {loginError ? 
+                <p className="error-message">Username or Password Incorrect</p> :
+                null}
                 <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} required/>
                 {!passwordValid ? 
                 <p className="error-message">Password not strong enough</p> : null}

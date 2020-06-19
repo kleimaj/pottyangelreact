@@ -2,6 +2,9 @@ $primary-color: #F9D117;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 
+// .App {
+//     background-color: $primary-color;
+// }
 .add-button {
     position: absolute;
     z-index: 2;
@@ -20,7 +23,22 @@ $desktop-width: 1024px;
         // background-color: white;
         border: 1px solid black;
     }
-
+}
+.target-button {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    // bottom: 0;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 70px;
+    @media screen and (max-width: $desktop-width) {
+        width: 60px;
+        margin-top: 270px;
+        margin-right: 10px;
+        opacity: .9;
+    }
 }
 .ui-message {
     cursor: default;
