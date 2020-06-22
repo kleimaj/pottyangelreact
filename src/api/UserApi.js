@@ -1,6 +1,8 @@
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
-const endpoint = "http://127.0.0.1:8000/"
+// const endpoint = "http://127.0.0.1:8000/"
+const endpoint = "http://potty-angel-api.eba-pi3mp22f.us-west-2.elasticbeanstalk.com/"
+
 
 const register = (user) => {
     return axios.post(`${endpoint}user/create`, user)
