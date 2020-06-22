@@ -11,7 +11,7 @@ const Comments = (props) => {
 
     const updatePotty = async(req) => {
         const data = await Potty.PottyUpdate(props.id, req);
-        console.log(data);
+        // console.log(data);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ const Comments = (props) => {
                 body: body,
                 rating: rating
             };
-            console.log(req)
+            // console.log(req)
             setComments((current) => [
                 ...current,
                 req
