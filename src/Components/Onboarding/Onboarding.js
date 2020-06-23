@@ -94,9 +94,9 @@ const Onboarding = (props) => {
                 UserApi.login(user)
                 .then(res => {
                     // get the token from the response
-                    console.log(res);
+                    // console.log(res);
                     const token = res.data.token;
-                    console.log(token)
+                    // console.log(token)
                     // set the token to local storage
                     localStorage.setItem('jwtToken', token);
                     // set the auth header to the token
