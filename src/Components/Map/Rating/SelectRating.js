@@ -6,7 +6,7 @@ const Rating = (props) => {
     const [stars, setStars] = useState([]);
 
     const renderRating = (rating) => {
-        console.log(rating)
+        // console.log(rating)
         let arr = [];
         let i = 0
         for (i = 0; i <= rating; i++) {
@@ -40,7 +40,7 @@ const Rating = (props) => {
     useEffect(() => {
         let arr = [];
         for (let i = 0; i < 5; i++) {
-            console.log(i)
+            // console.log(i)
             arr.push(
                 <img src="/images/tp.svg" 
                 role="button"

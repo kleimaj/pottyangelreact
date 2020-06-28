@@ -10,7 +10,7 @@ const PottyDetails = (props) => {
 
     const getPotty = async(id) => {
         const data = await Potty.PottyGet(id);
-        console.log(data.data.potty)
+        // console.log(data.data.potty)
         setPotty(data.data.potty.fields);
     }
     useEffect(() => {

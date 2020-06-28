@@ -75,7 +75,7 @@ const MyMapComponent = (props) => {
       }
       const mapClick = (e) => {
         if (props.add) {
-          console.log("click")
+          // console.log("click")
           let latLng = e.latLng;
           // get other data
           props.modal(latLng);
@@ -112,19 +112,17 @@ const MyMapComponent = (props) => {
     
     useEffect(() => {
       if (props.emergency) {
-        console.log("EMERGENCY")
-        console.log(closest);
         if (!closest) return; 
         setActive(closest);
         setCenter({lat: parseFloat(closest.latitude), lng: parseFloat(closest.longitude)});
       }
     }, [props.emergency]);
 
-    useEffect(() => {
-      if (props.add) {
-        console.log("ADD");
-      }
-    }, [props.add]);
+    // useEffect(() => {
+    //   if (props.add) {
+    //     console.log("ADD");
+    //   }
+    // }, [props.add]);
     const createPotty = async(body) => {
       const data = await Potty.PottyCreate(body)
       return data.data.id
@@ -132,7 +130,7 @@ const MyMapComponent = (props) => {
     }
     useEffect(() => {
       if (props.newMarker.length == 4) {
-        console.log(props.newMarker);
+        // console.log(props.newMarker);
         const body = 
         {
           latitude: props.newMarker[0],
@@ -142,7 +140,7 @@ const MyMapComponent = (props) => {
         }
         getCurrentAddress(body).then((res) => {
           body.address = res
-          console.log(body)
+          // console.log(body)
           createPotty(body)
           .then((id) => {
             setMarkers((current) => [

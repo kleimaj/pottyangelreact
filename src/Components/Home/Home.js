@@ -24,10 +24,10 @@ const Home = (props) => {
           function success(pos) {
             let crd = pos.coords;
 
-            console.log('Your current position is:');
-            console.log(`Latitude : ${crd.latitude}`);
-            console.log(`Longitude: ${crd.longitude}`);
-            console.log(`More or less ${crd.accuracy} meters.`);
+            // console.log('Your current position is:');
+            // console.log(`Latitude : ${crd.latitude}`);
+            // console.log(`Longitude: ${crd.longitude}`);
+            // console.log(`More or less ${crd.accuracy} meters.`);
             setPos({lat: crd.latitude, lng: crd.longitude});
             return({lat: crd.latitude, lng: crd.longitude})
           }
@@ -41,7 +41,6 @@ const Home = (props) => {
       if (mutex) return;
       setMutex(1)
       const data = await Potty.PottyIndex(pos);
-      console.log(data);
       // hardcoded data 
       // let hardcoded_data = 
       // {
