@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import UserApi from '../../api/UserApi';
 import setAuthHeader from '../../utils/setAuthHeader';
@@ -13,6 +13,17 @@ const Onboarding = (props) => {
     const [passwordValid, setValid] = useState(true);
     const [usernameError, setError] = useState(false);
     const [loginError, setLoginError] = useState(false);
+    const [fadeIn, setFadeIn] = useState(0);
+    const [fadeOut, setFadeOut] = useState(0);
+
+    useEffect(() => {
+      setTimeout(() => {
+        setFadeOut(1);
+        setTimeout(() => {
+          setFadeIn(1);
+        }, 1000);
+      }, 1500);
+    }, [])
 
     const checkPasswordStrength = password => {
         let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%\^&\*])(?=.{8,})")
@@ -148,7 +159,11 @@ const Onboarding = (props) => {
               // isPaused={this.state.isPaused}
               />
               </div>
-          <h3>High Quality Bathrooms Near You</h3>
+          {fadeIn ? 
+            (<h3 className="fade">Any Quality Bathrooms Near You</h3>):
+              (fadeOut ? 
+                <h3 className="fadeout">Hello!</h3> : 
+                <h3>Hello!</h3>) }
             <form onSubmit={handleLogin}>
                 {usernameError ? 
                 <p className="error-message">Username already taken</p> :

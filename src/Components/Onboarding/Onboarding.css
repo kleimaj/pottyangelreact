@@ -41,10 +41,24 @@
 }
 
 .landing-page h3 {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   font-size: 40px;
   margin-top: -70px;
   font-weight: normal;
   cursor: default;
+}
+
+.landing-page h3.fade {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.landing-page h3.fadeout {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
 }
 
 .landing-page form {

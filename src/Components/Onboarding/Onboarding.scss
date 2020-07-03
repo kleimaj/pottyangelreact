@@ -2,6 +2,10 @@ $primary-color: #F9D117;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 
+@mixin transition-ease {
+    transition: all 0.5s ease-in-out;
+}
+
 .landing-page {
     position: relative;
     z-index: 2;
@@ -32,11 +36,20 @@ $desktop-width: 1024px;
         margin-top: -50px;
     }
     h3 {
+        @include transition-ease;
         font-size: 40px;
         // display: inline;
         margin-top: -70px;
         font-weight: normal;
         cursor: default;
+        &.fade {
+            opacity: 1;
+            @include transition-ease;
+        }
+        &.fadeout {
+            @include transition-ease;
+            opacity: 0;
+        }
     }
     form {
         .error-message {
