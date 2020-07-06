@@ -42,11 +42,11 @@ $desktop-width: 1024px;
         margin-top: -70px;
         font-weight: normal;
         cursor: default;
-        &.fade {
+        span.fade {
             opacity: 1;
             @include transition-ease;
         }
-        &.fadeout {
+        span.fadeout {
             @include transition-ease;
             opacity: 0;
         }

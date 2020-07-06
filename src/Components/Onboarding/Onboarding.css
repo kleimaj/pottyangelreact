@@ -49,13 +49,13 @@
   cursor: default;
 }
 
-.landing-page h3.fade {
+.landing-page h3 span.fade {
   opacity: 1;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 
-.landing-page h3.fadeout {
+.landing-page h3 span.fadeout {
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   opacity: 0;

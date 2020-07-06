@@ -11,7 +11,7 @@ import Search from './Search';
 const libraries = ["places"];
 const mapContainerStyle = {
   width: '100vw',
-  height: '80vh'
+  height: '90vh'
 }
 const options = {
   styles: mapStyles,

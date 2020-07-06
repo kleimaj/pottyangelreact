@@ -3,6 +3,7 @@ import jwt_decode from 'jwt-decode';
 import UserApi from '../../api/UserApi';
 import setAuthHeader from '../../utils/setAuthHeader';
 import './Onboarding.css'
+import TextLoop from "react-text-loop";
 import Lottie from 'react-lottie';
 import * as animationData from './logoanimation2.json'
 
@@ -13,17 +14,24 @@ const Onboarding = (props) => {
     const [passwordValid, setValid] = useState(true);
     const [usernameError, setError] = useState(false);
     const [loginError, setLoginError] = useState(false);
-    const [fadeIn, setFadeIn] = useState(0);
-    const [fadeOut, setFadeOut] = useState(0);
+    // const [fadeIn, setFadeIn] = useState(0);
+    // const [fadeOut, setFadeOut] = useState(0);
 
-    useEffect(() => {
-      setTimeout(() => {
-        setFadeOut(1);
-        setTimeout(() => {
-          setFadeIn(1);
-        }, 1000);
-      }, 1500);
-    }, [])
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //     setFadeOut(1);
+    //     setTimeout(() => {
+    //       setFadeIn(1);
+    //     }, 1000);
+    //   }, 1000);
+    // }, [])
+
+    // const transitionText = () => {
+    //   setTimeout(() => {
+    //     return <span>Any</span>
+    //   }, 1500)
+    //   return <span>High</span>
+    // }
 
     const checkPasswordStrength = password => {
         let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%\^&\*])(?=.{8,})")
@@ -159,11 +167,24 @@ const Onboarding = (props) => {
               // isPaused={this.state.isPaused}
               />
               </div>
-          {fadeIn ? 
+          {/* {fadeIn ? 
             (<h3 className="fade">Any Quality Bathrooms Near You</h3>):
               (fadeOut ? 
                 <h3 className="fadeout">Hello!</h3> : 
-                <h3>Hello!</h3>) }
+                <h3>Hello!</h3>) } */}
+                {/* <h3>{fadeIn ? 
+            (<span className="fade">Any</span>):
+              (fadeOut ? 
+                <span className="fadeout">High</span> : 
+                <span>High</span>) } Quality Bathrooms Near You</h3> */}
+                <h3>
+                  <TextLoop>
+                    <span>High&nbsp;</span>
+                    <span>Any&nbsp;</span>
+                    <span>Many&nbsp;</span>
+                  </TextLoop>
+                    Quality Bathrooms Near You
+                </h3>
             <form onSubmit={handleLogin}>
                 {usernameError ? 
                 <p className="error-message">Username already taken</p> :
