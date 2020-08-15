@@ -7,18 +7,18 @@ import PottyDetails from '../Components/PottyDetails/PottyDetails';
 const Routes = (props) => {
     return (
         <Switch>
-          <Route exact path='/' render={() => 
-          <Home loggedIn={props.loggedIn} login={props.login} />}/>
           
           <Route path='/signup' render={() => 
           (props.loggedIn ? 
-          (<Redirect to='/' />):
-          (<Onboarding setUser={props.setUser} login={props.login}/>)
-          )} />
+            (<Redirect to='/' />):
+            (<Onboarding setUser={props.setUser} login={props.login}/>)
+            )} />
 
           <Route path='/potty/:id' render={() => 
           <PottyDetails loggedIn={props.loggedIn} user={props.user}/>} />
 
+          <Route exact path='/' render={() => 
+          <Home loggedIn={props.loggedIn} login={props.login} />}/>
         </Switch>
       );
     }

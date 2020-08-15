@@ -33,6 +33,9 @@ const Home = (props) => {
           }
           function error(err) {
             console.warn(`ERROR(${err.code}): ${err.message}`);
+            // Untested
+            setPos({lat: 37.7749, lng: 122.4194})
+            return({lat: 37.7749, lng: 122.4194})
           }          
         navigator.geolocation.getCurrentPosition(success, error, options);
 
